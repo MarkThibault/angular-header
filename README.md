@@ -12,7 +12,7 @@ It is suggested to have "angular-animate" installed.
 
 Add the following to your dependencies:
 ```
-"angular-filter": "git://github.com/MarkThibault/angular-filter.git",
+"angular-header": "git://github.com/MarkThibault/angular-header.git",
 ```
 
 ### Usage
