@@ -1,0 +1,7 @@
+﻿<div class="HeaderAccount">
+	<div class="HeaderAccount-userWrapper">
+		<div class="HeaderAccount-user">{{$ctrl.userName || 'Welcome'}}</div>
+		<a class="HeaderAccount-signOut" href="#" ng-click="$ctrl.signOut()">Sign Out</a>
+	</div>
+	<div class="HeaderAccount-userIcon" ng-bind-html="$ctrl.userIcon"></div>
+</div>

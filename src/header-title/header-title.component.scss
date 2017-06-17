@@ -1,0 +1,24 @@
+﻿$HeaderTitle-margin: 0 2rem 0 0 !default;
+$HeaderTitle-padding: 0 !default;
+$HeaderTitle-font-size: 2rem !default;
+$HeaderTitle-weight: 400 !default;
+
+$HeaderTitle-img-height: 3rem !default;
+$HeaderTitle-img-margin: 0 1rem 0 0 !default;
+$HeaderTitle-img-width: 11rem !default;
+
+.HeaderTitle {
+	align-items: center;
+	display: flex;
+	margin: $HeaderTitle-margin;
+	padding: $HeaderTitle-padding;
+
+	font-size: $HeaderTitle-font-size;
+	font-weight: $HeaderTitle-weight;
+	
+	&-img {
+		height: $HeaderTitle-img-height;
+		margin: $HeaderTitle-img-margin;
+		width: $HeaderTitle-img-width;
+	}
+}

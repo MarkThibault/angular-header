@@ -1,0 +1,83 @@
+﻿<nav class="HeaderNav">
+	<div class="HeaderNav-container" ng-if="navigation.areas">
+		<!-- if no area selected -->
+		<button class="HeaderNav-control" ng-if="navigation.showDefaultArea()" ng-disabled="area.disableArea()"
+		    ng-click="navigation.toggleAreaDropdown()">
+			<span class="HeaderNav-control-wrapper">
+				<span class="HeaderNav-control-label">{{area.label || "Area"}}</span>
+				<span class="HeaderNav-control-title">Select</span>
+			</span>
+			<span class="HeaderNav-control-arrow" ng-bind-html="navigation.arrowIcon"></span>
+		</button>
+
+		<!-- if NO areas for dropdown -->
+		<button class="HeaderNav-control" ng-if="!navigation.hasAreasToShowInDropdown() && area.inCurrentState()" ng-disabled="area.disableArea()" ng-repeat="area in navigation.areas"
+		    ng-click="area.clickEvent()">
+			<span class="HeaderNav-control-wrapper">
+				<span class="HeaderNav-control-label">{{area.label || "Area"}}</span>
+				<span class="HeaderNav-control-title">{{area.areaName}}</span>
+			</span>
+		</button>
+
+		<!-- if areas for dropdown -->
+		<button class="HeaderNav-control" ng-if="navigation.hasAreasToShowInDropdown() && area.inCurrentState()" ng-disabled="area.disableArea()" ng-repeat="area in navigation.areas"
+		    ng-click="navigation.toggleAreaDropdown()">
+			<span class="HeaderNav-control-wrapper">
+				<span class="HeaderNav-control-label">{{area.label || "Area"}}</span>
+				<span class="HeaderNav-control-title">{{area.areaName}}</span>
+			</span>
+			<span class="HeaderNav-control-arrow" ng-bind-html="navigation.arrowIcon"></span>
+		</button>
+
+		<div class="HeaderNavDropdown" ng-if="navigation.showAreaDropdown" ng-class="{'is-showing':navigation.showAreaDropdown}">
+			<button class="HeaderNavDropdown-item" ng-if="navigation.showAreaInDropdown(area)" type="button" ng-repeat="area in navigation.areas | orderBy:'areaName'"
+			    ng-click="area.clickEvent()">
+				<span class="MultiLevelMenuSubmenu-triggerText">{{area.areaName}}</span>
+			</button>
+		</div>
+	</div>
+	<div class="HeaderNav-container" ng-if="navigation.showWorkspaceButton(area)" ng-repeat="area in navigation.areas">
+		<!-- if no workspace selected -->
+		<button class="HeaderNav-control" ng-if="navigation.showDefaultAreaWorkspace(area)" ng-click="navigation.toggleWorkspaceDropdown(area)">
+			<span class="HeaderNav-control-wrapper">
+				<span class="HeaderNav-control-label">Workspace</span>
+				<span class="HeaderNav-control-title">Select</span>
+			</span>
+			<span class="HeaderNav-control-arrow" ng-show="area.workspaces.length" ng-bind-html="navigation.arrowIcon"></span>
+		</button>
+
+		<!-- if NO workspaces for dropdown -->
+		<button class="HeaderNav-control" ng-if="navigation.showSingleWorkspaceButton(area) && workspace.inCurrentState()" ng-disabled="workspace.disableWorkspace()" ng-repeat="workspace in area.workspaces"
+			ng-click="workspace.clickEvent()">
+			<span class="HeaderNav-control-wrapper">
+				<span class="HeaderNav-control-label">{{workspace.label || "Workspace"}}</span>
+				<span class="HeaderNav-control-title">{{workspace.workspaceName}}</span>
+			</span>
+		</button>
+
+		<!-- if workspaces for dropdown -->
+		<button class="HeaderNav-control" ng-if="!navigation.showSingleWorkspaceButton(area) && workspace.inCurrentState()" ng-disabled="workspace.disableWorkspace()" ng-repeat="workspace in area.workspaces"
+			ng-click="navigation.toggleWorkspaceDropdown(area)">
+			<span class="HeaderNav-control-wrapper">
+				<span class="HeaderNav-control-label">{{workspace.label || "Workspace"}}</span>
+				<span class="HeaderNav-control-title">{{workspace.workspaceName}}</span>
+			</span>
+			<span class="HeaderNav-control-arrow" ng-bind-html="navigation.arrowIcon"></span>
+		</button>
+		
+		<div class="HeaderNavDropdown" ng-if="navigation.showWorkspaceDropdown" ng-class="{'is-showing': navigation.showWorkspaceDropdown}">
+			<button class="HeaderNavDropdown-item" ng-if="navigation.showWorkspaceInDropdown(workspace)" type="button" ng-repeat="workspace in area.workspaces | orderBy:'workspaceName'"
+			    ng-click="workspace.clickEvent()">
+				<span class="MultiLevelMenuSubmenu-triggerText">{{workspace.workspaceName}}</span>
+			</button>
+		</div>
+	</div>
+	<div class="HeaderNav-container" ng-if="navigation.subspace">
+		<button class="HeaderNav-control" ng-disabled="true">
+			<span class="HeaderNav-control-wrapper">
+				<span class="HeaderNav-control-label">{{navigation.subspace.label || "Action"}}</span>
+				<span class="HeaderNav-control-title">{{navigation.subspace.subspaceName}}</span>
+			</span>
+		</button>
+	</div>
+</nav>

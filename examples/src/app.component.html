@@ -1,0 +1,49 @@
+<angular-header show="app.isAuthenticated">
+    <angular-header-title>
+        <img class="HeaderTitle-img" src="http://placehold.it/350x100?text=Logo" alt="" /> Header Text
+    </angular-header-title>
+    <angular-header-navigation></angular-header-navigation>
+    <angular-header-account on-sign-out="app.signOut()" user-name="app.userName"></angular-header-account>
+</angular-header>
+
+<div class="Wrapper">
+    <div class="DevelopmentNav">
+        <h2>Angular Ui Router State Map</h2>
+        <ul>
+            <li><a ui-sref="user()" ui-sref-active="active">user</a></li>
+            <ul>
+                <li><a ui-sref="user.dashboard()" ui-sref-active="active">user.dashboard</a></li>
+            </ul>
+        </ul>
+        <ul>
+            <li><a ui-sref="registrants()" ui-sref-active="active">registrants</a></li>
+            <ul>
+                <li><a ui-sref="registrants.list()" ui-sref-active="active">registrants.list</a></li>
+                <li>
+                    <a ui-sref="registrants.registrantDetails({employeeId:'abc123'})" ui-sref-active="active">registrants.registrantDetails</a>
+                    <ul>
+                        <li>
+                            <a ui-sref="registrants.registrantDetails.edit({employeeId:'abc123'})" ui-sref-active="active">registrants.registrantDetails.edit</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </ul>
+        <ul>
+            <li><a ui-sref="about()" ui-sref-active="active">about</a></li>
+            <ul>
+                <li><a ui-sref="about.us()" ui-sref-active="active">about.us</a></li>
+                <li><a ui-sref="about.faqs()" ui-sref-active="active">about.faqs</a></li>
+                <li><a ui-sref="about.releaseNotes()" ui-sref-active="active">about.releaseNotes</a></li>
+                <li><a ui-sref="about.tutorials()" ui-sref-active="active">about.tutorials</a></li>
+            </ul>
+        </ul>
+        <ul>
+            <li><a ui-sref="error()" ui-sref-active="active">error</a></li>
+        </ul>
+        <h3>
+            <a href="#" ng-click="app.goToParent()" ui-sref-active="active">Back To Parent</a>
+        </h3>
+    </div>
+    <main class="Main" ui-view></main>
+</div>

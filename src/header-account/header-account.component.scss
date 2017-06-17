@@ -1,0 +1,58 @@
+﻿@import '~angular-shared-scss/src/settings';
+
+$HeaderAccount-user-color: inherit !default;
+$HeaderAccount-user-font-size: 1rem !default;
+$HeaderAccount-user-line-height: 1 !default;
+
+$HeaderAccount-signOut-color: inherit !default;
+$HeaderAccount-signOut-hover-color: inherit !default;
+$HeaderAccount-signOut-font-size: 0.75rem !default;
+
+$HeaderAccount-userIcon-height: 2.5rem !default;
+$HeaderAccount-userIcon-margin: 0 0 0 0.5rem !default;
+$HeaderAccount-userIcon-width: 2.5rem !default;
+$HeaderAccount-userIcon-fill: $tiara !default;
+
+.HeaderAccount {
+    align-items: center;
+	display: flex;
+	justify-content: flex-end;
+	flex-direction: row;
+	flex-shrink: 0;
+
+	text-align: right;
+
+    &-userWrapper {
+        display: flex;
+        flex-direction: column;
+	    justify-content: center;
+    }
+
+	&-user {
+		position: relative;
+
+		color: $HeaderAccount-user-color;
+		font-size: $HeaderAccount-user-font-size;
+		line-height: $HeaderAccount-user-line-height;
+	}
+
+	&-signOut {
+		color: $HeaderAccount-signOut-color;
+		font-size: $HeaderAccount-signOut-font-size;
+
+		&:hover, &:focus, &:active {
+            color: $HeaderAccount-signOut-hover-color; 
+        }
+	}
+
+    &-userIcon {
+        display: flex;
+		flex-direction: column;
+		flex-shrink: 0;
+		height: $HeaderAccount-userIcon-height;
+		margin: $HeaderAccount-userIcon-margin;
+		width: $HeaderAccount-userIcon-width;
+
+        fill: $HeaderAccount-userIcon-fill;
+    }
+}

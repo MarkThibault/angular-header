@@ -1,0 +1,166 @@
+﻿@import '~angular-shared-scss/src/settings';
+@import '~angular-shared-scss/src/mixins';
+@import '~angular-shared-scss/src/animations';
+
+$HeaderNav-control-border-width: 0 0 0 0.0625rem !default;
+$HeaderNav-control-padding: 0.5rem 2rem !default;
+$HeaderNav-control-border-color: $tiara !default;
+$HeaderNav-control-color: inherit !default;
+$HeaderNav-control-fill: inherit !default;
+$HeaderNav-control-hover-color: $astral-1 !default;
+$HeaderNav-control-hover-fill: $astral-1 !default;
+$HeaderNav-control-disabled-title-color: inherit !default;
+
+$HeaderNav-label-font-size: 0.75rem !default;
+$HeaderNav-label-line-height: 1 !default;
+$HeaderNav-label-margin: 0 0 0.25rem 0 !default;
+$HeaderNav-label-color: inherit !default;
+
+$HeaderNav-title-font-size: 1.125rem !default;
+$HeaderNav-title-line-height: 1 !default;
+$HeaderNav-title-transition: color 0.3s $cubic-bezier !default;
+$HeaderNav-title-color: inherit !default;
+$HeaderNav-title-font-weight: 300 !default;
+
+.HeaderNav {
+	display: flex;
+	flex-grow: 1;
+
+	&-container {
+		display: flex;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	&-control {
+        @include button-reset;
+		border-width: $HeaderNav-control-border-width;
+		display: flex;
+		flex-grow: 1;
+		align-items: center;
+		padding: $HeaderNav-control-padding;
+
+		border-color: $HeaderNav-control-border-color;
+		border-style: solid;
+		color: $HeaderNav-control-color;
+        cursor: pointer;
+		fill: $HeaderNav-control-fill;
+
+        &:hover ,
+		&:focus {
+			color: $HeaderNav-control-hover-color;
+			fill: $HeaderNav-control-hover-fill;
+        }
+
+        &:disabled {
+            cursor: default;
+        }
+
+        &:disabled &-title {
+            color: $HeaderNav-control-disabled-title-color;
+        }
+
+		&-wrapper {
+			display: flex;
+			flex-direction: column;
+		}
+
+		&-label {
+			font-size: $HeaderNav-label-font-size;
+			line-height: $HeaderNav-label-line-height;
+            margin: $HeaderNav-label-margin;
+			color: $HeaderNav-label-color;
+		}
+
+		&-title {
+			font-size: $HeaderNav-title-font-size;
+			line-height: $HeaderNav-title-line-height;
+            transition: $HeaderNav-title-transition;
+			color: $HeaderNav-title-color;
+			font-weight: $HeaderNav-title-font-weight;
+		}
+
+		&-arrow {
+			margin-left: 1rem;
+		}
+
+		&-arrow, &-arrow svg {
+			display: block;
+			height: 0.5rem;
+			width: 0.5rem;
+			fill: inherit;
+		}
+	}
+}
+
+$HeaderNavDropdown-margin: 0 0 0 0.5rem !default;
+$HeaderNavDropdown-is-showing-add-margin-top: 0 !default;
+$HeaderNavDropdown-is-showing-margin-top: 3rem !default;
+$HeaderNavDropdown-background-color: $white !default;
+$HeaderNavDropdown-border-radius: 0.25rem !default;
+$HeaderNavDropdown-fill: $tiara !default;
+$HeaderNavDropdown-opacity: 1!default;
+
+$HeaderNavDropdown-item-padding: 0.75rem !default;
+$HeaderNavDropdown-item-font-size: 1rem!default;
+$HeaderNavDropdown-item-line-height: 1 !default;
+$HeaderNavDropdown-item-hover-background-color: $link-water !default;
+$HeaderNavDropdown-item-hover-color: $astral-1 !default;
+$HeaderNavDropdown-item-hover-fill: $astral-1 !default;
+
+.HeaderNavDropdown {
+	margin: $HeaderNavDropdown-margin;
+	min-width: 12rem;
+	overflow: hidden;
+    position: fixed;
+    z-index: 80;
+
+    background-color: $HeaderNavDropdown-background-color;
+    border-radius: $HeaderNavDropdown-border-radius;
+    box-shadow: $whiteframe-shadow-8dp;
+    fill: $HeaderNavDropdown-fill;
+    opacity: $HeaderNavDropdown-opacity;
+    transition: margin-top 0.3s $cubic-bezier;
+
+    &.is-showing {
+		margin-top: $HeaderNavDropdown-is-showing-margin-top;
+    }
+
+	&.is-showing-add {
+		margin-top: $HeaderNavDropdown-is-showing-add-margin-top;
+    }
+
+	&.ng-enter-active {
+        animation: $fade-in;
+		margin-top: $HeaderNavDropdown-is-showing-margin-top;
+    }
+
+    &.ng-leave-active {
+        animation: $fade-out;
+    }
+	
+	&-item {
+        @include button-reset;
+		display: block;
+		flex-grow: 1;
+        padding: $HeaderNavDropdown-item-padding;
+		width: 100%;
+
+        font-size: $HeaderNavDropdown-item-font-size;
+        line-height: $HeaderNavDropdown-item-line-height;
+        transition: background-color 0.3s $cubic-bezier;
+
+		&:hover, &:focus {
+			background-color: $HeaderNavDropdown-item-hover-background-color;
+			color: $HeaderNavDropdown-item-hover-color;
+			fill: $HeaderNavDropdown-item-hover-fill;
+		}
+
+		&.ng-leave {
+			display: none;
+    	}
+    }
+}
+
+
