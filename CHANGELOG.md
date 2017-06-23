@@ -1,3 +1,7 @@
+## [2.1.4] - 2017-06-22
+### Fixed Bug
+- Removed types from npmignore
+
 ## [2.1.3] - 2017-05-16
 ### Updated build
 - Updated build steps
